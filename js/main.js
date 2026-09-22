@@ -40,18 +40,16 @@ let turno =1
 
 // Mientras quede mas de un jugador en el array pelear por parejas
 // while....
-while (campo.length>1){
-    console.log(`Turno: ${turno}`)
-    // Pelear por parejas. Si los elementos que quedan en el array son impares, el último no pelea
-    // eliminar los que se quedan fuera
-    // ordernar
-    for (let i=0; i<campo.length; i++){
-        campo[i].luchar(campo[i+1])
-        i+=2
+while (campo.length > 1) {
+    console.log(`--- Turno: ${turno} ---`);
+    for (let i = 0; i < campo.length - 1; i += 2) {
+        campo[i].luchar(campo[i + 1]);
     }
-    campo.filter(jug=>jug.salud>0)
-    shuffleArray(campo)
-    turno++
+
+    campo = campo.filter(jug => jug.salud > 0);
+
+    shuffleArray(campo);
+    turno++;
 }
 
 // Imprimir campeón. Unico elemento que queda en el array
